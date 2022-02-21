@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CompareService } from './compare/compare.service';
 
 import { AuthService } from './user/auth.service';
 
@@ -12,6 +13,7 @@ export class AppComponent implements OnInit {
   isAuthenticated = false;
 
   constructor(private authService: AuthService,
+              private compareService: CompareService,
               private router: Router) {
   }
 
@@ -30,6 +32,7 @@ export class AppComponent implements OnInit {
   }
 
   onLogout() {
+    this.compareService.onLogout();
     this.authService.logout();
   }
 }
